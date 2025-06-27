@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 import uvicorn
 
 def main():
-    pdf_path = '/home/ubuntu/Omniagent/Emaar_FAQ.pdf' # Update as needed
+    pdf_path = '/home/ubuntu/Omniagent/Emaar_FAQ.pdf'  # Update as needed
     agent = SalesRAGAgent(pdf_path)
     print("Welcome to the Agentic Sales Assistant! Type 'quit' to exit.")
     while True:
