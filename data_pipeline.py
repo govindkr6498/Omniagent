@@ -5,6 +5,8 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 from pathlib import Path
 import json
+from dotenv import load_dotenv
+
 
 logger = logging.getLogger("data_pipeline")
 logger.setLevel(logging.INFO)
@@ -12,6 +14,8 @@ handler = logging.StreamHandler()
 formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
+
+load_dotenv()
 
 S3_BUCKET ="accountrecord" #os.getenv("BUCKET_NAME")
 S3_KEY = "emaarGroupRecords/b8db7d18-6340-4f1b-9bbb-a2736503cc98/1593091727-2025-06-13T07:17:56" #os.getenv("INDEX_KEY")
@@ -26,7 +30,8 @@ TABLE_NAME = 'properties'
 AWS_ACCESS_KEY_ID = os.getenv("AWS_CLIENT_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_CLIENT_SECRET")
 AWS_REGION = "us-east-1" #os.getenv("AWS_REGION")
-
+print("AWS_ACCESS_KEY_ID:", AWS_ACCESS_KEY_ID)
+print("AWS_SECRET_ACCESS_KEY:", AWS_SECRET_ACCESS_KEY)
 
 def download_from_s3():
     logger.info("Downloading data from S3 bucket: %s, key: %s", S3_BUCKET, S3_KEY)
