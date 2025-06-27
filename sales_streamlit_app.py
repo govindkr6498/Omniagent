@@ -27,7 +27,7 @@ def initialize_chatbot():
     """Initialize the chatbot for the current session."""
     if st.session_state.chatbot is None:
         try:
-            st.session_state.chatbot = SalesRAGAgent('/home/Omniagent/Emaar_FAQ.pdf') 
+            st.session_state.chatbot = SalesRAGAgent('Emaar_FAQ.pdf') 
             logger.info(f"Chatbot initialized for session {st.session_state.session_id}")
         except Exception as e:
             logger.error(f"Error initializing chatbot: {str(e)}")
