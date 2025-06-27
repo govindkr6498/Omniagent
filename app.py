@@ -17,7 +17,7 @@ st.title("Agentic Sales RAG Bot")
 st.write("A modular sales assistant for lead generation, meeting scheduling, and PDF-based Q&A.")
 
 if 'agent' not in st.session_state:
-    st.session_state.agent = SalesRAGAgent(pdf_path='/home/Omniagent/Emaar_FAQ.pdf')
+    st.session_state.agent = SalesRAGAgent(pdf_path='/home/ubuntu/Omniagent/Emaar_FAQ.pdf')
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
 
