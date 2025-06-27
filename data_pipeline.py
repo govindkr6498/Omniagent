@@ -35,7 +35,14 @@ def download_from_s3():
         aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
         region_name=AWS_REGION
     )
-    s3 = session.client('s3')
+    # s3 = session.client('s3')
+    s3 = boto3.client(
+        "s3",
+        aws_access_key_id=AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+        region_name=AWS_REGION
+    )
+
     s3.download_file(S3_BUCKET, S3_KEY, LOCAL_FILE)
     logger.info("Downloaded file to %s", LOCAL_FILE)
     return LOCAL_FILE
@@ -70,4 +77,3 @@ def run_data_pipeline():
 
 if __name__ == "__main__":
     run_data_pipeline()
-
