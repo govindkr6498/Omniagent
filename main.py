@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 import uvicorn
 
 def main():
-    pdf_path = '/home/Omniagent/Emaar_FAQ.pdf'  # Update as needed
+    pdf_path = '/home/ubuntu/Omniagent/Emaar_FAQ.pdf' # Update as needed
     agent = SalesRAGAgent(pdf_path)
     print("Welcome to the Agentic Sales Assistant! Type 'quit' to exit.")
     while True:
@@ -27,7 +27,7 @@ agent_instance = None
 @app.on_event("startup")
 def startup_event():
     global agent_instance
-    agent_instance = SalesRAGAgent(pdf_path='/home/Omniagent/Emaar_FAQ.pdf')
+    agent_instance = SalesRAGAgent(pdf_path='/home/ubuntu/Omniagent/Emaar_FAQ.pdf')
 
 @app.post("/chat")
 async def chat_endpoint(request: Request):
