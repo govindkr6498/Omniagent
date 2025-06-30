@@ -70,7 +70,8 @@ Action Input: the input to the action
 Observation: the result of the action  
 ... (repeat Thought/Action/Action Input/Observation as needed)  
 Thought: I now know the final answer  
-Final Answer: the final answer to the original question, in a friendly, conversational style.
+Final Answer: include the complete detailed answer in a friendly, conversational style — for example, list each property with its code, type, price, and project name. Do NOT skip or summarize.
+
 
 **IMPORTANT INSTRUCTIONS:**
 
@@ -94,7 +95,7 @@ Question: {input}
         self.agent = create_react_agent(llm=self.llm, tools=self.tools, prompt=self.prompt)
         self.agent_executor = AgentExecutor(
             agent=self.agent, tools=self.tools, verbose=True,
-            handle_parsing_errors=True, max_iterations=5, early_stopping_method="force"
+            handle_parsing_errors=True, max_iterations=10, early_stopping_method="generate"
         )
 
     def fuzzy_match(self, user_val: str, choices: list[str], cutoff: float = 0.6) -> str:
